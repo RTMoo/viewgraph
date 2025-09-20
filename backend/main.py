@@ -28,13 +28,12 @@ async def upload_video(
     title = video.filename
     contents = await video.read()
     upload_path = str(MEDIA_DIR / title)
-    
+
     with open(upload_path, "wb") as file:
         file.write(contents)
-    
 
     clip = VideoFileClip(upload_path)
-    
+
     uploaded_video = Video(
         title=title,
         duration=math.ceil(clip.duration),
