@@ -9,5 +9,5 @@ class Video(Base):
     __tablename__ = "video"
 
     title: Mapped[str]
-    duration: Mapped[int | None]
-    path: Mapped[str | None]
+    duration: Mapped[int]
+    path: Mapped[str]
