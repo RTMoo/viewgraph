@@ -1,5 +1,10 @@
-from sqlalchemy.orm import Mapped, mapped_column
+from typing import TYPE_CHECKING
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from backend.db import Base
+
+
+if TYPE_CHECKING:
+    from statistics.models import VideoStatisticModel
 
 
 class VideoModel(Base):
@@ -9,3 +14,8 @@ class VideoModel(Base):
     duration: Mapped[int]
     path: Mapped[str]
     views_count: Mapped[int] = mapped_column(default=0)
+
+    statistics: Mapped["VideoStatisticModel"] = relationship(
+        back_populates="video",
+        uselist=False,
+    )
