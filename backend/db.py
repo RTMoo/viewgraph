@@ -1,4 +1,4 @@
-from .settings import DATABASE_URL
+from settings import DATABASE_URL
 from typing import AsyncGenerator, Annotated
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from fastapi import Depends

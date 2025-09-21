@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from backend.db import Base
+from db import Base
 
 
 if TYPE_CHECKING:

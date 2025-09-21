@@ -4,9 +4,9 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from backend.db import Base
-from backend.videos.models import VideoModel
-from backend.statistics.models import VideoStatisticModel
+from db import Base
+from videos.models import VideoModel
+from statistics.models import VideoStatisticModel
 
 config = context.config
 

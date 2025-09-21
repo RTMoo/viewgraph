@@ -1,5 +1,5 @@
 from typing import TYPE_CHECKING
-from backend.db import Base
+from db import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import JSON, ForeignKey
 
