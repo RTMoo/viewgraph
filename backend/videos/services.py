@@ -1,6 +1,7 @@
 from videos.models import VideoModel
 from statistics.models import VideoStatisticModel
 from sqlalchemy.ext.asyncio import AsyncSession
+from settings import CHUNKS_QUANTITY
 
 
 async def save_video_metadata(
@@ -14,7 +15,10 @@ async def save_video_metadata(
         duration=duration,
         path=path,
     )
-    video.statistics = VideoStatisticModel()
+    chunk_size = duration / CHUNKS_QUANTITY
+    video.statistics = VideoStatisticModel(
+        chunk_size=chunk_size,
+    )
     session.add(video)
     await session.commit()
 

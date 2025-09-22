@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 from db import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import JSON, ForeignKey
-from settings import CHUNK
+from settings import CHUNKS_QUANTITY
 
 
 if TYPE_CHECKING:
@@ -20,9 +20,12 @@ class VideoStatisticModel(Base):
         back_populates="statistics",
         single_parent=True,
     )
-    stats: Mapped[dict] = mapped_column(
-        JSON, default=lambda: {i: 0 for i in range(1, CHUNK + 1)}
+    chunks: Mapped[dict] = mapped_column(
+        JSON,
+        default=lambda: {i: 0 for i in range(1, CHUNKS_QUANTITY + 1)},
     )
-    diff_stats: Mapped[dict] = mapped_column(
-        JSON, default=lambda: {i: 0 for i in range(1, CHUNK + 1)}
+    diff_chunks: Mapped[dict] = mapped_column(
+        JSON,
+        default=lambda: {i: 0 for i in range(1, CHUNKS_QUANTITY + 1)},
     )
+    chunk_size: Mapped[int]
