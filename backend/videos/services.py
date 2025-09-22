@@ -1,4 +1,5 @@
-from .models import VideoModel
+from videos.models import VideoModel
+from statistics.models import VideoStatisticModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
@@ -8,12 +9,13 @@ async def save_video_metadata(
     path: str,
     session: AsyncSession,
 ) -> VideoModel:
-    created_video = VideoModel(
+    video = VideoModel(
         title=title,
         duration=duration,
         path=path,
     )
-    session.add(created_video)
+    video.statistics = VideoStatisticModel()
+    session.add(video)
     await session.commit()
 
-    return created_video
+    return video
