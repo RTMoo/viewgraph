@@ -5,8 +5,7 @@ from sqlalchemy import pool
 
 from alembic import context
 from db import Base
-from videos.models import VideoModel
-from statistics.models import VideoStatisticModel
+import all_models  # noqa
 
 config = context.config
 

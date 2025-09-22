@@ -16,7 +16,7 @@ class VideoStatisticModel(Base):
         unique=True,
     )
     video: Mapped["VideoModel"] = relationship(
-        back_populates="statistic",
+        back_populates="statistics",
         single_parent=True,
     )
     stats: Mapped[dict] = mapped_column(
