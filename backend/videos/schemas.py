@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 
 class VideoSchema(BaseModel):
+    id: int
     title: str
     duration: int
     path: str

@@ -1,19 +1,16 @@
 from fastapi import APIRouter
 from db import SessionDep
-from statistics.schemas import VideoViewStats
+from statistics.schemas import WatchedIntervals
 
 
 router = APIRouter()
 
 
 @router.post(
-    "/set_moments",
+    "/set_chunks",
 )
-async def set_user_view_moments(
-    stats: VideoViewStats,
+async def set_video_view_chunks(
+    stats: WatchedIntervals,
     session: SessionDep,
 ):
-    for interval in stats.intervals:
-        print(interval.start, interval.end)
-
-    return 0
+    pass

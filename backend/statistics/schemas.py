@@ -6,5 +6,5 @@ class Interval(BaseModel):
     end: int
 
 
-class VideoViewStats(BaseModel):
+class WatchedIntervals(BaseModel):
     intervals: list[Interval]
