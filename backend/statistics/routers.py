@@ -1,9 +1,9 @@
-from fastapi import APIRouter
-from db import SessionDep
 from statistics.schemas import WatchedTimecodes
-from statistics.utils import get_chunks_from_timecodes
 from statistics.services import get_video_stat, update_diff_chunks
+from statistics.utils import get_chunks_from_timecodes
 
+from db import SessionDep
+from fastapi import APIRouter
 
 router = APIRouter()
 

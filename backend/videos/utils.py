@@ -1,6 +1,7 @@
 import math
-from moviepy import VideoFileClip
+
 from fastapi import UploadFile
+from moviepy import VideoFileClip
 
 
 def get_video_duration(path: str) -> int:

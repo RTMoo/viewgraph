@@ -1,8 +1,8 @@
-from fastapi import FastAPI
 from contextlib import asynccontextmanager
-
-from videos.routers import router as video_router
 from statistics.routers import router as stats_router
+
+from fastapi import FastAPI
+from videos.routers import router as video_router
 
 
 @asynccontextmanager

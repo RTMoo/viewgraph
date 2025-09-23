@@ -1,10 +1,9 @@
-from fastapi import UploadFile, APIRouter, HTTPException
 from db import SessionDep
-from videos.schemas import VideoSchema
+from fastapi import APIRouter, HTTPException, UploadFile
 from settings import MEDIA_DIR
+from videos.schemas import VideoSchema
 from videos.services import save_video_metadata
 from videos.utils import get_video_duration, save_video
-
 
 router = APIRouter()
 

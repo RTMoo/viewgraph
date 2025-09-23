@@ -1,7 +1,8 @@
-from videos.models import VideoModel
 from statistics.models import VideoStatisticModel
-from sqlalchemy.ext.asyncio import AsyncSession
+
 from settings import CHUNKS_QUANTITY
+from sqlalchemy.ext.asyncio import AsyncSession
+from videos.models import VideoModel
 
 
 async def save_video_metadata(

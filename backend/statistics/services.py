@@ -1,7 +1,8 @@
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 from statistics.models import VideoStatisticModel
 from statistics.schemas import Interval
+
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 async def get_video_stat(

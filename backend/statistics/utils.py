@@ -1,7 +1,8 @@
 import math
 from statistics.schemas import Interval, Timecodes
-from settings import CHUNKS_QUANTITY
+
 from fastapi import HTTPException
+from settings import CHUNKS_QUANTITY
 
 
 def get_chunks_from_timecodes(
