@@ -3,6 +3,7 @@ from db import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import JSON, ForeignKey
 from settings import CHUNKS_QUANTITY
+from sqlalchemy.ext.mutable import MutableDict
 
 
 if TYPE_CHECKING:
@@ -20,12 +21,12 @@ class VideoStatisticModel(Base):
         back_populates="statistics",
         single_parent=True,
     )
-    chunks: Mapped[dict] = mapped_column(
-        JSON,
-        default=lambda: {i: 0 for i in range(1, CHUNKS_QUANTITY + 1)},
+    chunks: Mapped[dict[str, int]] = mapped_column(
+        MutableDict.as_mutable(JSON),
+        default=lambda: {str(i): 0 for i in range(CHUNKS_QUANTITY)},
     )
-    diff_chunks: Mapped[dict] = mapped_column(
-        JSON,
-        default=lambda: {i: 0 for i in range(1, CHUNKS_QUANTITY + 1)},
+    diff_chunks: Mapped[dict[str, int]] = mapped_column(
+        MutableDict.as_mutable(JSON),
+        default=lambda: {str(i): 0 for i in range(CHUNKS_QUANTITY)},
     )
     chunk_size: Mapped[float]
