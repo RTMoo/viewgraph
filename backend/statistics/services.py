@@ -1,6 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from statistics.models import VideoStatisticModel
+from statistics.schemas import Interval
 
 
 async def get_video_stat(
@@ -12,3 +13,18 @@ async def get_video_stat(
     stat = result.scalar_one()
 
     return stat
+
+
+async def update_diff_chunks(
+    stat: VideoStatisticModel,
+    chunks: list[Interval],
+    session: AsyncSession,
+) -> dict[str, int]:
+    for chunk in chunks:
+        stat.diff_chunks[str(chunk.start)] += 1
+        stat.diff_chunks[str(chunk.end)] -= 1
+
+    session.add(stat)
+    await session.commit()
+
+    return stat.diff_chunks
