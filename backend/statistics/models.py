@@ -28,4 +28,4 @@ class VideoStatisticModel(Base):
         JSON,
         default=lambda: {i: 0 for i in range(1, CHUNKS_QUANTITY + 1)},
     )
-    chunk_size: Mapped[int]
+    chunk_size: Mapped[float]
