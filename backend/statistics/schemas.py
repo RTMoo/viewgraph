@@ -2,8 +2,8 @@ from pydantic import BaseModel
 
 
 class Interval(BaseModel):
-    start: int
-    end: int
+    start: float
+    end: float
 
 
 class WatchedIntervals(BaseModel):
